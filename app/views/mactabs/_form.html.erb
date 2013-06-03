@@ -1,0 +1,35 @@
+<%= form_for(@mactab) do |f| %>
+  <% if @mactab.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mactab.errors.count, "error") %> prohibited this mactab from being saved:</h2>
+
+      <ul>
+      <% @mactab.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <p>
+      <%= f.label :macaddr %><br />
+      <%= f.text_field :macaddr %>
+    </p>
+    <p>
+      <%= f.label :macip %><br />
+      <%= f.text_field :macip %>
+    </p>
+    <p>
+      <%= f.label :macinfo %><br />
+      <%= f.text_field :macinfo %>
+    </p>
+    <p>
+      <%= f.label :macdetails  %><br />
+      <%= f.text_area :macdetails  %>
+    </p>        
+    <p>
+      <%= f.submit %>
+    </p>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quantes - MAC Monitor</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <!-- %= javascript_include_tag "application" % -->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+        <header>
+            <h1> Quantes - MAC Book Records </h1>
+        </header>
+        <div id="main">
+		<%= yield %>
+        </div>
+        <footer>
+            <p>&copy; 2013 Quantes. by Charles..</p>
+        </footer>
+<%= javascript_include_tag "application" %>
+<% if params[:action] == 'index' %>
+        <script>
+            d('#main').go(function(){
+                //this.echo();
+                console.debug(this.px(this.el), this.py(this.el));
+            });
+
+            d('#qtabs').stab({show:'#macde'});
+
+var dispatcher = new WebSocketRails('54.225.108.139:3000/websocket');
+channel = dispatcher.subscribe('mactab');
+channel.bind('new', function(mactab) {
+  console.log('a new mactab about ',mactab);
+});
+        </script>
+<% end %>
+</body>
+</html>

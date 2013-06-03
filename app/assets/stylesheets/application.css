@@ -1,0 +1,157 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+
+/* MACtabs CSS */
+
+body, div, ul, li, h1, h2, a, img {
+    margin: 0;
+    padding: 0;
+}
+
+body { font-family:Verdana,Arial,sans-serif;font-size:11px;font-weight: normal; }
+h1 {
+    margin: 10px 0 0;
+}
+
+h1,h2 {
+    color: #888888;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+header, #main, footer {
+    padding-bottom: 15px;
+    padding-top: 20px;
+    width: 880px;
+    margin: 0 auto;
+}
+
+#content {
+    position: relative;
+}
+
+
+/*
+http://jqueryui.com/tabs/
+*/
+#qtabs {
+    border: grey;
+    border-radius: 2px;
+    border: 1px solid #AAAAAA;
+    padding: 3px;
+    padding-bottom: 20px;
+}
+
+.menus {
+    /*border: 2px solid red; */
+    border-radius: 4px;
+    overflow: auto;
+    border: 1px solid #AAAAAA;
+}
+
+#qtabs ul {
+    background-color: #cccccc;
+    height: 30px;
+    padding: 3px 0 0 3px;
+    border-radius: 4px;
+    /*overflow: auto; */
+    border: 1px solid #AAAAAA;
+}
+
+#qtabs ul li {
+    list-style: none;    
+    float: left;
+    border: 1px solid #d3d3d3;
+    background: #e6e6e6;
+    font-weight: normal;
+    color: #555555;
+    border-radius: 8px 8px 0 0;
+    margin-right: 3px;
+    padding-bottom: 3px;
+}
+
+#qtabs ul li a {    
+    display: block;
+    float: left;
+    padding: 0 10px;
+    height: 25px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#qtabs ul li.active {
+    background: #fff;    
+    padding-bottom: 5px;
+    border: 1px solid #AAAAAA;
+    border-bottom: none;
+}
+
+#qtabs ul li.hover {
+    border: 1px solid #999999;
+    font-weight: normal;
+    color: #212121;    
+}
+
+#sub_head, #macad_tab, #macde_tab {
+    background: #fff;
+    padding: 5px;
+}
+
+#sub_head {
+    margin-top: 10px;
+}
+
+.shadow {
+    -moz-box-shadow: 3px 3px 4px rgba(0,0,0,0.5); /* #000; */
+    -webkit-box-shadow: 3px 3px 4px rgba(0,0,0,0.5);
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.5);
+}
+
+#qtabs ul.gradientt, #macad_tab tr.gradientt {
+  background-color: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#999999));
+  background-image: -webkit-linear-gradient(top, #ffffff, #999999);
+  background-image:    -moz-linear-gradient(top, #ffffff, #999999);
+  background-image:      -o-linear-gradient(top, #ffffff, #999999);
+  background-image:         linear-gradient(to bottom, #ffffff, #999999);
+}
+
+#macad_tab table, #macad_tab table th, #macad_tab table td {
+    border-width: 1px;
+    border-color: #AAAAAA;
+    border-collapse: collapse;
+    border-style: solid;
+}
+#macad_tab table th {
+    padding: 5px;
+}
+#macad_tab table td {
+    padding: 8px;
+}
+
+#sub_head .glowing-border {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+#sub_head .glowing-border:focus { 
+    outline: none;
+    border-color: #9ecaed;
+    border: 1px solid #4195fc; /* some kind of blue border */
+    /* make it glow! */
+    -webkit-box-shadow: 0px 0px 4px #4195fc;
+       -moz-box-shadow: 0px 0px 4px #4195fc;
+            box-shadow: 0px 0px 4px #4195fc; /* some variation of blue for the shadow */
+}

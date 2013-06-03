@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <th>MAC</th>
+    <th>Values</th>
+  </tr>
+  <tr>
+    <td>Address</td>
+    <td><%=@mactab.macaddr%></td>
+  </tr>
+  <tr>
+    <td>IP</td>
+    <td><%=@mactab.macip%></td>
+  </tr>
+  <tr>
+    <td>Info</td>
+    <td><%=@mactab.macinfo %></td>
+  </tr>
+  <tr>
+    <td>Details</td>
+    <td><%=@mactab.macdetails%></td>
+  </tr>
+  <tr>
+</table>
+<%= link_to 'Edit', edit_mactab_path(@mactab) %> |
+<%= link_to 'Back', mactabs_path %>

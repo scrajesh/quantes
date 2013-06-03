@@ -1,0 +1,44 @@
+            <h1> MAC Book Records </h1>
+            <div id="qtabs">
+                <ul class="theader gradientt">
+                    <li class="menu active" id="macad">
+                        <a>MAC Addresses</a>
+                    </li>
+                    <li class="menu" id="macde">
+                        <a>MAC Details</a>
+                    </li>
+                </ul>
+                <div id="sub_head">
+                    <input type="text" name="q" class="glowing-border">
+                </div>
+                <div id="macad_tab" class="tab">
+                    <table summary="table listing the MAC records">
+                      <thead>
+                          <tr class="gradientt">
+                            <th>MAC Address</th>
+                            <th>MAC IP</th>
+                            <th>MAC Info</th>
+                            <th>MAC Details</th>
+                            <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+			<% @mactabs.each do |mactab| %>
+			  <tr id='mac<%=mactab.id%>'>
+			    <td><%= link_to mactab.macaddr, mactab %></td>
+			    <td><%=mactab.macip%></td>
+			    <td><%=mactab.macinfo %></td>
+			    <td><%=mactab.macdetails%></td>
+			    <td><%= link_to 'Edit', edit_mactab_path(mactab) %>&nbsp;|&nbsp;<%= link_to 'Destroy', mactab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			  </tr>
+			<% end %>
+                      </tbody>                      
+                    </table>
+                </div>
+                <div id="macde_tab" class="tab">
+                    <p> DET: Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>                    
+                </div>
+            </div>
+<br />
+
+<%= link_to 'New Mactab', new_mactab_path %>
