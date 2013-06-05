@@ -1,9 +1,12 @@
 
+
+
 // Position helpers
 
 _d_mixin({
 	// Find the X (Horizontal, Left) position of an element
 	ex: function(elem) {
+		elem = (!elem ? this.el : elem);
 		// See if we're at the root element, or not
 		return elem.offsetParent ?
 			// If we can still go up, add the current offset and recurse upwards
@@ -14,6 +17,7 @@ _d_mixin({
 
 	// Find the Y (Vertical, Top) position of an element
 	ey: function(elem) {
+		elem = (!elem ? this.el : elem);
 		// See if we're at the root element, or not
 		return elem.offsetParent ?
 			// If we can still go up, add the current offset and recurse upwards
@@ -24,6 +28,7 @@ _d_mixin({
 
 	// Find the horizontal positioing of an element within its parent
 	px: function(elem) {
+		elem = (!elem ? this.el : elem);
 		// If the offsetParent is the element's parent, break early
 		return elem.parentNode == elem.offsetParent ?
 			elem.offsetLeft :
@@ -34,6 +39,7 @@ _d_mixin({
 
 	// Find the vertical positioning of an element within its parent
 	py: function(elem) {
+		elem = (!elem ? this.el : elem);
 		// If the offsetParent is the element's parent, break early
 		return elem.parentNode == elem.offsetParent ?
 			elem.offsetTop :
@@ -43,6 +49,7 @@ _d_mixin({
 	},
 
 	x: function(elem, pos) {
+		elem = (!elem ? this.el : elem);
 		if(pos===undefined) {
 			// Get the computed style and get the number out of the value
 			return parseInt(this.get_style(elem,"left"));
@@ -53,6 +60,7 @@ _d_mixin({
 	},
 
 	y: function(elem, pos) {
+		elem = (!elem ? this.el : elem);
 		if(pos===undefined) {
 			// Get the computed style and get the number out of the value
 			return parseInt(this.get_style(elem,"top"));
@@ -63,6 +71,7 @@ _d_mixin({
 	},
 
 	xy: function(elem, pos) {
+		elem = (!elem ? this.el : elem);
 		if(pos===undefined) {
 			// Get the computed style and get the number out of the value
 			return {x: parseInt(this.get_style(elem,"left")), y: parseInt(this.get_style(elem,"top"))};

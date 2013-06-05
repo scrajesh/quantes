@@ -1,9 +1,11 @@
 
+
 // CSS helpers
 
 _d_mixin({
 	// Get a style property (name) of a specific element (elem)
 	get_style: function(elem,name) {
+		elem = (!elem ? this.el : elem);
 		// If the property exists in style[], then it's been set
 		// recently (and is current)
 		if (elem.style[name])
@@ -25,14 +27,24 @@ _d_mixin({
 			return null;
 	},
 
+	get_rawcss: function(elem){
+		elem = (!elem ? this.el : elem);
+		if(document.defaultView && document.defaultView.getComputedStyle) {
+			return document.defaultView.getComputedStyle(elem,"");
+		}
+
+		return null;
+	},
 	// Get the actual height (using the computed CSS) of an element
 	get_height: function(elem) {
+		elem = (!elem ? this.el : elem);
 		// Gets the computed CSS value and parses out a usable number
 		return parseInt(this.get_style(elem, 'height'));
 	},
 
 	// Get the actual width (using the computed CSS) of an element
 	get_width: function(elem) {
+		elem = (!elem ? this.el : elem);
 		// Gets the computed CSS value and parses out a usable number
 		return parseInt(this.get_style(elem, 'width'));
 	},
@@ -40,6 +52,7 @@ _d_mixin({
 	// Find the full, possible, height of an element (not the actual,
 	// current, height)
 	height: function(elem) {
+		elem = (!elem ? this.el : elem);
 		// If the element is being displayed, then offsetHeight
 		// should do the trick, barring that, get_height() will work
 		if(this.get_style(elem, 'display') != 'none')
@@ -64,6 +77,7 @@ _d_mixin({
 	// Find the full, possible, width of an element (not the actual,
 	// current, width)
 	width: function(elem) {
+		elem = (!elem ? this.el : elem);
 		// If the element is being displayed, then offsetWidth
 		// should do the trick, barring that, getWidth() will work
 		if(this.get_style(elem, 'display') != 'none')
@@ -138,10 +152,18 @@ _d_mixin({
 			elem.style.opacity = level / 100;
 	},
 
+	has_class: function(klass,elem){
+		elem = (!elem ? this.el : elem);
+		var regexp = new RegExp('(^| )' + klass + '( |$)');
+		return regexp.test(elem.className);
+	},
+
 	add_class: function(klass,elem){
 		elem = (!elem ? this.el : elem);
-		var tmp = elem.className;
-		elem.className += tmp ? ' '+klass : klass;
+		if(!this.has_class(klass,elem)){
+			var tmp = elem.className;
+			elem.className += tmp ? ' '+klass : klass;
+		}
 	},
 
 	rmv_class: function(klass,elem){
@@ -151,5 +173,10 @@ _d_mixin({
 	    rmv_c = rmv_c.replace(re, '$1');
 	    rmv_c = rmv_c.replace(/ $/, '');
 	    elem.className = rmv_c;
+	},
+
+	replace_class: function(rmvklass,repklass,elem){
+		this.rmv_class(rmvklass,elem);
+		this.add_class(repklass,elem);
 	}
 });
