@@ -19,17 +19,43 @@
 <%= javascript_include_tag "application" %>
 <% if params[:action] == 'index' %>
         <script>
-            d('#main').go(function(){
-                //this.echo();
-                console.debug(this.px(this.el), this.py(this.el));
-            });
-
-            d('#qtabs').stab({show:'#macde'});
+            d('#qtabs').stab();
+	    var ieditor=d('#macad_tab').iedit();
 
 var dispatcher = new WebSocketRails('54.225.108.139:3000/websocket');
 channel = dispatcher.subscribe('mactab');
 channel.bind('new', function(mactab) {
   console.log('a new mactab about ',mactab);
+
+            d('#MacTable').go(function(){
+                var _mac_template ='<tr class="iedit" id="mac-{id}"><td><input type="button" class="ieditbtn"><span class="macaddr">{macaddr}</span></td><td><span class="macip">{macip}</span></td><td><span class="macinfo">{macinfo}</span></td><td><span class="macdet">{macdetails}</span></td><td class="noedit"><span><a href="/mactabs/{id}/edit">Edit</a> | <a rel="nofollow" data-method="delete" data-confirm="Are you sure?" href="/mactabs/{id}">Destroy</a></span></td></tr>',                    
+		    _rendered = _mac_template.supplant(mactab), _wrapped=this.wrapit(_rendered,'table'),
+                    _tbody=this.next(this.first()),_tr=this.first(this.first(_wrapped)),counter=0,_timer;
+
+console.debug(_rendered);
+console.debug(_wrapped);
+console.debug(_tbody);
+console.debug(_tr);
+               
+                this.appendto(_tr,_tbody);
+                ieditor.rebuild.call(_tr);
+
+                function bg() {
+                    _tr.style.backgroundColor = (_tr.style.backgroundColor == 'silver' ? 'white' : 'silver');
+                    ++counter;
+                    if(counter>=5){
+                        clearTimeout(_timer);
+                        _tr.style.backgroundColor = '#fff';
+                    }
+                }
+
+                function blink() {
+                    _timer=setInterval(bg, 500);
+                }
+
+                blink();
+            });
+
 });
         </script>
 <% end %>

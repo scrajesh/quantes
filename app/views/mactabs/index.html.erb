@@ -12,7 +12,7 @@
                     <input type="text" name="q" class="glowing-border">
                 </div>
                 <div id="macad_tab" class="tab">
-                    <table summary="table listing the MAC records">
+                    <table summary="table listing the MAC records" id="MacTable">
                       <thead>
                           <tr class="gradientt">
                             <th>MAC Address</th>
@@ -24,12 +24,32 @@
                       </thead>
                       <tbody>
 			<% @mactabs.each do |mactab| %>
-			  <tr id='mac<%=mactab.id%>'>
-			    <td><%= link_to mactab.macaddr, mactab %></td>
-			    <td><%=mactab.macip%></td>
-			    <td><%=mactab.macinfo %></td>
-			    <td><%=mactab.macdetails%></td>
-			    <td><%= link_to 'Edit', edit_mactab_path(mactab) %>&nbsp;|&nbsp;<%= link_to 'Destroy', mactab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			  <tr class="iedit" id='mac-<%=mactab.id%>'>
+			    <td>
+				<input type="button" class="ieditbtn">
+				<span class="macaddr">
+				   <%=mactab.macaddr%>
+				</span>
+			    </td>
+			    <td>
+<span class="macip">
+<%=mactab.macip%>
+</span>
+</td>
+			    <td>
+<span class="macinfo">
+<%=mactab.macinfo %>
+</span>
+</td>
+			    <td>
+<span class="macdet">
+<%=mactab.macdetails%>
+</span>
+</td>
+			    <td class="noedit">
+<span>
+<%= link_to 'Edit', edit_mactab_path(mactab) %>&nbsp;|&nbsp;<%= link_to 'Destroy', mactab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</span>
 			  </tr>
 			<% end %>
                       </tbody>                      

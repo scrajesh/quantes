@@ -61,7 +61,7 @@ class MactabsController < ApplicationController
     respond_to do |format|
       if @mactab.update_attributes(params[:mactab])
         format.html { redirect_to @mactab, notice: 'Mactab was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @mactab }
       else
         format.html { render action: "edit" }
         format.json { render json: @mactab.errors, status: :unprocessable_entity }

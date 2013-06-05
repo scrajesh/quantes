@@ -2,17 +2,19 @@
 // simple tab plugin for the D-lib
 
 d('stab').plugin(function(opts){
+    // a self copy
     var self=this;
+    // tabbing helpers
     var tab ={
-        init: function(){                        
-            var _default = O(opts.show);
+        tabbit: function(){
             // toggle other tabs
-            tab.toggle.call(_default,'prev');
-            tab.toggle.call(_default,'next');
+            tab.toggle.call(this,'prev');
+            tab.toggle.call(this,'next');
             // activate n show the current tab
-            self.add_class('active',_default);
-            self.show('#'+_default.id+'_tab');
+            self.add_class('active',this);
+            self.show('#'+this.id+'_tab');
         },
+
         toggle: function(f){
             var _tmp = self[f](this);
             while(_tmp) {
@@ -23,14 +25,7 @@ d('stab').plugin(function(opts){
         }
     };
     // tab head click-handlers
-    this.on('click', function(e){
-        // toggle other tabs
-        tab.toggle.call(this,'prev');
-        tab.toggle.call(this,'next');
-        // activate n show the current tab
-        self.add_class('active',this);
-        self.show('#'+this.id+'_tab');
-    },this.nodes('li',null,self.first()));
-    // init the tabs now
-    tab.init();
+    this.on('click', tab.tabbit, this.nodes('li',null,self.first()));
+    // for default
+    tab.tabbit.call(((opts && opts.show)?O(opts.show):d(self.first()).first()));
 });

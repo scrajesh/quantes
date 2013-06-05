@@ -12,8 +12,9 @@
 //
 // require jquery
 // require jquery_ujs
-//= require_tree .
+// require_tree .
 //= require websocket_rails/main
 //= require dlib.min
 //= require stab.dlib
-
+//= require iedit.dlib
+//= require json-minified

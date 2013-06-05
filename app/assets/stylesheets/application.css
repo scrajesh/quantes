@@ -34,7 +34,7 @@ h1,h2 {
 header, #main, footer {
     padding-bottom: 15px;
     padding-top: 20px;
-    width: 880px;
+    width: 1100px;
     margin: 0 auto;
 }
 
@@ -155,3 +155,65 @@ http://jqueryui.com/tabs/
        -moz-box-shadow: 0px 0px 4px #4195fc;
             box-shadow: 0px 0px 4px #4195fc; /* some variation of blue for the shadow */
 }
+
+
+.show {
+    display: block !important;
+}
+.hide {
+    display: none !important;
+}
+
+.iedit .ieditbtn {
+    background-color: green;
+    border: medium none;
+    cursor: pointer;
+    height: 20px;
+    padding: 0;
+    width: 6px;
+}
+
+.iedit .ieditbtn.off {
+    background-color: green;
+}
+
+.iedit .ieditbtn.on {
+    background-color: red;
+}
+
+.iedit input[type="text"].itxteditor,.iedit textarea.itxteditor {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+.iedit input[type="text"].itxteditor :focus,.iedit textarea.itxteditor :focus { 
+    outline: none;
+    border-color: #9ecaed;
+    border: 2px solid #4195fc; /* some kind of blue border */
+    /* make it glow! */
+    -webkit-box-shadow: 0px 0px 4px #4195fc;
+       -moz-box-shadow: 0px 0px 4px #4195fc;
+            box-shadow: 0px 0px 4px #4195fc; /* some variation of blue for the shadow */
+    /* small animate */            
+    background: #FFD;
+    -webkit-transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+    -ie-transition: background-color 0.5s;
+    transition: background-color 0.5s;            
+}
+
+#toaster{
+    position: absolute;
+    z-index: 999;
+    border-radius: 8px;
+    padding: 10px;
+    background: silver;
+
+    outline: none;
+    border: 2px solid #000; /* some kind of blue border */
+    /* make it glow! */
+    -webkit-box-shadow: 0px 0px 4px #000;
+       -moz-box-shadow: 0px 0px 4px #000;
+            box-shadow: 0px 0px 4px #000; /* some variation of blue for the shadow */        
+}
+
